@@ -1,7 +1,7 @@
 FROM ubuntu:focal
 
 RUN apt-get update && \
-    apt-get install -y wget procps gpg libcurl4
+    apt-get install -y wget procps gpg libcurl4 logrotate
 
 ENV branch=ubuntu
 ENV distro=focal
