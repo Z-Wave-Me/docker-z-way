@@ -7,6 +7,6 @@ docker build -t zway .
 
 ## Run
 ```sh
-docker container run --rm -it -p 8083:8083 zway
+docker container run --rm -it -p 8083:8083 --device=/dev/ttyACM0 zway
 ```
 
