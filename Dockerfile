@@ -12,7 +12,7 @@ WORKDIR /opt
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Add Z-Wave.Me repository
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x7E148E3C && \
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 5b2f88a91611e683 && \
     echo "deb https://repo.z-wave.me/z-way/$branch $distro main" > /etc/apt/sources.list.d/z-wave-me.list
 
 # Update packages list
