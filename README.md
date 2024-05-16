@@ -1,3 +1,7 @@
+# Docker container for Z-Way
+
+This Docker container will run the latest [Z-Way](https://z-wave.me/z-way/) - the Smart Home controller software by Z-Wave.Me.
+
 ## Getting Started
 
 1. Clone this repository to your local machine:
@@ -36,4 +40,4 @@
     docker compose up
     ```
 
-This server works only with controllers from Z-Wave.Me, such as RaZberry 2/5/7/Pro, mPCIe module, UZB, and Z-Station.
+This server works only with controllers from Z-Wave.Me, such as RaZberry 2/5/7/[Pro](https://z-wave.me/products/razberry/), [mPCIe module](https://z-wave.me/products/mpcie/), UZB, and [Z-Station](https://z-wave.me/products/z-station/).
