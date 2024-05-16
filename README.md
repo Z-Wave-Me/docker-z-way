@@ -32,8 +32,8 @@
 4. Build and start the container:
 
     ```sh
-    docker-compose build
-    docker-compose up
+    docker compose build
+    docker compose up
     ```
 
 This server works only with controllers from Z-Wave.Me, such as RaZberry 2/5/7/Pro, mPCIe module, UZB, and Z-Station.
