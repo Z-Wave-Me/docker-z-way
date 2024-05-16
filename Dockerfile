@@ -10,7 +10,7 @@ RUN mkdir -p /etc/zbw/flags && touch /etc/zbw/flags/no_connection
 RUN apt-get update && \
     apt-get install -qqy --no-install-recommends \
     ca-certificates curl \
-    wget procps gpg iproute2 openssh-client openssh-server sudo logrotate jq
+    wget procps gpg iproute2 openssh-client openssh-server sudo logrotate
 
 # Install z-way-server
 RUN wget -q -O - https://storage.z-wave.me/Z-Way-Install | bash
