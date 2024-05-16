@@ -24,7 +24,7 @@
     - **macOS**:
 
         ```sh
-        ls /dev/tty.*
+        ls /dev/cua*
         ```
 
 3. Update the `docker-compose.yml` file with the correct device paths if necessary.
