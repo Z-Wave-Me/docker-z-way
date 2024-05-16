@@ -1,0 +1,13 @@
+services:
+  z-way-server:
+    build:
+      context: .
+    container_name: z-way-container
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0 # For Z-Wave UZB Stick or Z-Station
+#      - /dev/ttyUSB1:/dev/ttyUSB1 # For additional interface like a Z-Station or ZigBee stick
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

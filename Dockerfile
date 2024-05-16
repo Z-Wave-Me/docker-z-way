@@ -1,30 +1,30 @@
 FROM ubuntu:focal
 
+WORKDIR /opt/z-way-server
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Block zbw key request
+RUN mkdir -p /etc/zbw/flags && touch /etc/zbw/flags/no_connection
+
 RUN apt-get update && \
-    apt-get install -y wget procps gpg libcurl4 logrotate
+    apt-get install -qqy --no-install-recommends \
+    ca-certificates curl \
+    wget procps gpg iproute2 openssh-client openssh-server sudo logrotate
 
-ENV branch=ubuntu
-ENV distro=focal
+# Install z-way-server
+RUN wget -q -O - https://storage.z-wave.me/Z-Way-Install | bash
+RUN rm -f /opt/z-way-server/automation/storage/*
 
-ENV TZ=Europe/Moscow
+# Unblock zbw
+RUN rm /etc/zbw/flags/no_connection
+RUN echo "zbox" > /etc/z-way/box_type
 
-WORKDIR /opt
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+COPY rootfs/ /
 
-# Add Z-Wave.Me repository
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 5b2f88a91611e683 && \
-    echo "deb https://repo.z-wave.me/z-way/$branch $distro main" > /etc/apt/sources.list.d/z-wave-me.list
-
-# Update packages list
-RUN apt-get update && \
-    apt-get install -y z-way-server zbw
-
-ENV LD_LIBRARY_PATH=/opt/z-way-server/libs
-ENV PATH=/opt/z-way-server:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
-VOLUME ["/opt/z-way-server/config/zddx"]
-VOLUME ["/opt/z-way-server/automation/storage"]
+# Add the initialization script
+RUN chmod +x /opt/z-way-server/run.sh
 
 EXPOSE 8083
 
-CMD /etc/init.d/z-way-server start && /bin/bash 
+CMD /opt/z-way-server/run.sh
