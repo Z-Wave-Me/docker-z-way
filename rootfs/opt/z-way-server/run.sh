@@ -28,6 +28,7 @@ for path in $paths; do
             echo "Created ${path} in /data."
         fi
     fi
+    rm -Rf $path
     ln -sf /data$path $path
     echo "Created symlink for ${path}."
 done
@@ -38,7 +39,8 @@ if [ ! -e /data/opt/z-way-server/configs/config ]; then
     mv /opt/z-way-server/config /data/opt/z-way-server/configs/
     echo "Moved and symlinked config directory."
 fi
-ln -sf /data/opt/z-way-server/configs/ /opt/z-way-server/
+rm -Rf /opt/z-way-server/config
+ln -sf /data/opt/z-way-server/configs/ /opt/z-way-server/configs
 
 # Start services
 /etc/init.d/z-way-server start
