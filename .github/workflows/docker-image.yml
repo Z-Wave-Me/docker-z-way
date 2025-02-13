@@ -7,15 +7,15 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch:
-          - amd64
-          - armhf
-          - aarch64
+  build-amd64:
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag docker-z-way-${{ matrix.arch }}:$(date +%s) --platform linux/${{ matrix.arch }}
+    - name: Build the Docker image for amd64
+      run: docker build . --file Dockerfile --tag docker-z-way-amd64:$(date +%s)
+  build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image for armhf
+      run: docker build . --file Dockerfile --tag docker-z-way-armhf:$(date +%s)
