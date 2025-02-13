@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM debian:bookworm
 
 WORKDIR /opt/z-way-server
 
@@ -13,7 +13,7 @@ RUN apt-get update && \
     wget procps gpg iproute2 openssh-client openssh-server sudo logrotate
 
 # Install z-way-server
-RUN wget -q -O - https://storage.z-wave.me/Z-Way-Install | bash
+RUN wget -q -O - https://storage.z-wave.me/Z-Way-Install | bash -e
 RUN rm -f /opt/z-way-server/automation/storage/*
 
 # Unblock zbw
