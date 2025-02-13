@@ -42,7 +42,7 @@ This Docker container will run the latest [Z-Way](https://z-wave.me/z-way/) - th
 
 This server works only with controllers from Z-Wave.Me, such as RaZberry 2/5/7/[Pro](https://z-wave.me/products/razberry/), [mPCIe module](https://z-wave.me/products/mpcie/), UZB, and [Z-Station](https://z-wave.me/products/z-station/).
 
-## Runnin on Raspberry Pi
+## Running on Raspberry Pi
 
 On Raspberry Pi, build the docker container:
 
@@ -53,7 +53,7 @@ On Raspberry Pi, build the docker container:
     sudo mkdir /data
     ```
 
-And run it:
+Run the container:
 
     ```sh
     sudo docker run -p 8083 -v /data:/data --device /dev/ttyUSB0:/dev/ttyUSB0 -it z-way-container /opt/z-way-server/run.sh
