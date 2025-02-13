@@ -44,7 +44,7 @@ This server works only with controllers from Z-Wave.Me, such as RaZberry 2/5/7/[
 
 ## Runnin on Raspberry Pi
 
-To run on Raspberry Pi, build the docker container manually:
+On Raspberry Pi, build the docker container:
 
     ```sh
     sudo apt-get install git
@@ -53,8 +53,12 @@ To run on Raspberry Pi, build the docker container manually:
     sudo mkdir /data
     ```
 
+And run it:
+
     ```sh
     sudo docker run -p 8083 -v /data:/data --device /dev/ttyUSB0:/dev/ttyUSB0 -it z-way-container /opt/z-way-server/run.sh
     ```
 
 Change `/dev/ttyUSB0` to `/dev/ttyAMA0` in the line above and in `Apps > Active Apps > Z-Wave Network Access > Serial port` if you are using RaZberry 7 Pro or other board connected to Raspberry Pi UART pins.
+
+All your files will be stored in the /data folder of your host.
