@@ -5,6 +5,7 @@ WORKDIR /opt/z-way-server
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Block zbw key request
+RUN ls -l /etc/ -R
 RUN mkdir -p /etc/zbw/flags && touch /etc/zbw/flags/no_connection
 
 RUN apt-get update && \
