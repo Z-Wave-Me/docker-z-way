@@ -1,13 +1,17 @@
 services:
   z-way-server:
+    container_name: z-way-container
     build:
       context: .
-    container_name: z-way-container
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0 # For Z-Wave UZB Stick or Z-Station
-#      - /dev/ttyUSB1:/dev/ttyUSB1 # For additional interface like a Z-Station or ZigBee stick
+      # - /dev/ttyUSB1:/dev/ttyUSB1 # For additional interface like a Z-Station or ZigBee stick
     ports:
       - "8083:8083"
+    restart: unless-stopped
     volumes:
       - ./data:/data
-    restart: unless-stopped

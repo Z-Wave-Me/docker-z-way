@@ -1,4 +1,6 @@
-FROM debian:bullseye
+ARG OS_RELEASE=bullseye
+FROM --platform=$BUILDPLATFORM debian:${OS_RELEASE}
+ARG TARGETPLATFORM
 
 WORKDIR /opt/z-way-server
 
@@ -20,7 +22,7 @@ RUN rm -f /opt/z-way-server/automation/storage/*
 
 # Unblock zbw
 RUN rm /etc/zbw/flags/no_connection
-RUN echo "zbox" > /etc/z-way/box_type
+RUN mkdir -p /etc/z-way && echo "zbox" > /etc/z-way/box_type
 
 COPY rootfs/ /
 
