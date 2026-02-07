@@ -1,5 +1,7 @@
 # Docker container for Z-Way
 
+USE THIS NEW REPOSITORY INSTEAD: https://github.com/tridentiot/z-way-docker
+
 This Docker container will run the latest [Z-Way](https://z-wave.me/z-way/) - the Smart Home controller software by Z-Wave.Me.
 
 ## Getting Started
